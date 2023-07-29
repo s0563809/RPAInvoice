@@ -13,6 +13,7 @@
     "UiPath.ComplexScenarios.Activities": "[1.1.3]",
     "UiPath.Database.Activities": "[1.7.1]",
     "UiPath.Excel.Activities": "[2.11.4]",
+    "UiPath.Jira.Activities": "[2.4.1]",
     "UiPath.Mail.Activities": "[1.12.3]",
     "UiPath.Presentations.Activities": "[1.2.4]",
     "UiPath.System.Activities": "[21.10.5]",
@@ -55,6 +56,14 @@
     "modernBehavior": true
   },
   "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "c4380de5-1ba6-4161-a5a6-ced20b92a02b",
+      "input": [],
+      "output": []
+    }
+  ],
   "isTemplate": false,
   "templateProjectData": {},
   "publishData": {},
