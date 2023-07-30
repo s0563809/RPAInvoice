@@ -1,0 +1,115 @@
+USE [master]
+GO
+/****** Object:  Database [customerData]    Script Date: 30/07/2023 15:49:30 ******/
+CREATE DATABASE [customerData]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'customerData', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVEREXP\MSSQL\DATA\customerData.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'customerData_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVEREXP\MSSQL\DATA\customerData_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+GO
+ALTER DATABASE [customerData] SET COMPATIBILITY_LEVEL = 160
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [customerData].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [customerData] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [customerData] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [customerData] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [customerData] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [customerData] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [customerData] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [customerData] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [customerData] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [customerData] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [customerData] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [customerData] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [customerData] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [customerData] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [customerData] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [customerData] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [customerData] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [customerData] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [customerData] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [customerData] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [customerData] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [customerData] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [customerData] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [customerData] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [customerData] SET  MULTI_USER 
+GO
+ALTER DATABASE [customerData] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [customerData] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [customerData] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [customerData] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [customerData] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [customerData] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [customerData] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [customerData] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [customerData]
+GO
+/****** Object:  Table [dbo].[billingData]    Script Date: 30/07/2023 15:49:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[billingData](
+	[billing_id] [int] NOT NULL,
+	[companyName] [varchar](50) NULL,
+	[firstName] [varchar](50) NOT NULL,
+	[lastName] [varchar](50) NOT NULL,
+	[street] [varchar](50) NOT NULL,
+	[postalCode] [varchar](50) NOT NULL,
+	[city] [varchar](50) NOT NULL,
+	[po_id] [int] NULL,
+	[sum] [float] NOT NULL,
+	[salutation] [varchar](4) NULL,
+	[mail] [varchar](50) NULL,
+ CONSTRAINT [PK_billingData] PRIMARY KEY CLUSTERED 
+(
+	[billing_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[billingData] ([billing_id], [companyName], [firstName], [lastName], [street], [postalCode], [city], [po_id], [sum], [salutation], [mail]) VALUES (123456, N'HTW', N'Kerstin', N'Busch', N'Treskowalle 8', N'10318', N'Berlin', 1234, 34598.45, N'Frau', N'marlies.nelle@googlemail.com')
+GO
+INSERT [dbo].[billingData] ([billing_id], [companyName], [firstName], [lastName], [street], [postalCode], [city], [po_id], [sum], [salutation], [mail]) VALUES (123457, N'HTW Berlin', N'Dieter', N'Hasenfuß', N'Wilhelminenhofstraße 75A', N'12459', N'Berlin', 1235, 78546.51, N'Herr', N'kavurur.emre@hotmail.de')
+GO
+USE [master]
+GO
+ALTER DATABASE [customerData] SET  READ_WRITE 
+GO
